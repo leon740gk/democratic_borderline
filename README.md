@@ -1,5 +1,7 @@
 # democratic_borderline
 
+Task description
+
 You are working on the borderline for the free democratic european state. Everyday, a lot ofcivilians crosses the border. 
 We are creating software that saves all the information aboutpeople. 
 Your task is to create REST API that saves all the information about a person (firstname, last name, date of birth, single/married (with whom), 
