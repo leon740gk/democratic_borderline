@@ -82,8 +82,8 @@ WSGI_APPLICATION = 'test_democratic_borderline.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME', 'borderline_db'),
-        'USER': os.environ.get('DB_USER', 'alexanderl'),
+        'NAME': os.environ.get('SQL_DB_NAME', 'borderline_db'),
+        'USER': os.environ.get('SQL_DB_USER', 'alexanderl'),
         'PASSWORD': os.environ.get('SQL_DB_PASSWORD', ''),
         'HOST': os.environ.get('SQL_DB_HOST', 'localhost'),
         'PORT': '5432',

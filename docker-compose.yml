@@ -1,0 +1,43 @@
+version: '3.4'
+
+services:
+  postgres:
+    image: postgres:10-alpine
+    container_name: postgres
+    hostname: postgres
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+    networks:
+      - main
+    restart: on-failure
+    volumes:
+      - borderline-postgresql-data:/var/lib/postgresql/data
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: >
+      sh -c "python manage.py migrate
+      && python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - SQL_DB_HOST=postgres
+      - SQL_DB_NAME=postgres
+      - SQL_DB_PASSWORD=postgres
+      - SQL_DB_USER=postgres
+    container_name: app
+    depends_on:
+      - postgres
+    hostname: app
+    image: app-image
+    networks:
+      - main
+    restart: on-failure
+    ports:
+      - "8000:8000"
+
+networks:
+  main:
+
+volumes:
+  borderline-postgresql-data:
